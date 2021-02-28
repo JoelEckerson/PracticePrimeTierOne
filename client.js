@@ -16,6 +16,8 @@ function addPurchase(){
   $ ( '#purchasePriceIn' ).val( '' );
   //calculate remaingBudget
   calculateRemainingBudget();
+  // update DOM
+  displayPurchases();
 } // end addPurchase
 
 function calculateRemainingBudget(){
@@ -34,6 +36,19 @@ function calculateRemainingBudget(){
   el.empty();
   el.append( remainingBudget );
 }// end calculateRemainingBudget
+
+function displayPurchases() {
+  console.log( 'in displayPurchases' );
+  //target output by ID
+  let el = $( '#purchasesOut' );
+  //empty
+  el.empty();
+  //loop through purchases array
+  for( purchase of purchases ){
+    //for each purchase, create a list item
+    el.append( `<li>` + purchase.name + `: $` + purchase.price + `</li>` );
+  }//end for 
+}// end displayPurchases
 
 function readyNow(){
   // display budgetOut
